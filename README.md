@@ -2,10 +2,9 @@
 
 Routing incoming requests, and saving general statistics, which is available on dstatus action call.
 
-Example:
-
-  router := router.Router{
-		Level:  1,
+* Example:
+    router := router.Router{
+		Level:  1,        
 		Offset: 0,
 		Dstatus: router.NewDstatus(router.DstatusData{
 			Name: "Router example",
