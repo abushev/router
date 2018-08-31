@@ -1,0 +1,42 @@
+<html>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<head>
+<title>Welcome {{.Name}}</title>
+</head>
+<body>
+	<h1>{{.Name}} status</h1><p>your ip:{{.Ip}}, port {{.Port}}</p>
+	<p>Started at: {{.StartTime}}</p>
+    <p>Working duration: {{.Duration}}</p>
+    <p>country: {{.Country}}</p>
+    <p>request uri: {{.Uri}}</p>
+
+	<table border=1 cellspacing='0' cellpadding='3'>
+		<tr>
+			<th>action/result</th>
+			<th>count</th>
+			<th>per sec</th>
+			<th>min exec time</th>
+			<th>max exec time</th>
+			<th>avg exec time</th>
+			<th>Request more then 1 sec</th>
+			<th>Last request at</th>
+		</tr>
+		{{range $name, $el := .Map}}
+		<tr>
+			<td>{{$name}}</td>
+			<td>{{.Count}}</td>
+			<td>{{printf "%.2f" .PerSec}}</td>
+			<td>{{printf "%.5f" .MinExecTime}}</td>
+			<td>{{printf "%.5f" .MaxExecTime}}</td>
+			<td>{{printf "%.5f" .AvgExecTime}}</td>
+			<td>{{.LongRequests}}</td>
+			<td>{{.Last}}</td>
+		</tr>
+		{{end}}
+	</table>
+	<br/><hr/>
+	{{.AdditionalData}}
+	<br/><hr/>
+</body>
+</html>
+
